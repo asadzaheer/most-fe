@@ -1,0 +1,139 @@
+{
+  "common": {
+    "back": "Back",
+    "continue": "Continue",
+    "cancel": "Cancel"
+  },
+  "nav": {
+    "home": "Home",
+    "faq": "FAQ",
+    "publicQueue": "Public Queue",
+    "logout": "Logout"
+  },
+  "home": {
+    "title": "YOUR QUEUE NUMBER",
+    "subtitle": "Queue under control. Everything humanely.",
+    "ahead": "Ahead",
+    "waitTime": "Wait Time",
+    "atBorder": "At Border",
+    "battery": "Battery",
+    "actions": "ACTIONS",
+    "stepAway": "Step Away",
+    "returning": "Returning...",
+    "positionFrozen": "Position frozen for 20 min. You have paused your position for 20 minutes. Please return on time.",
+    "stepAwayLimit": "Pause for up to 20 min",
+    "watchQueue": "Watch Queue",
+    "takePlace": "TAKE PLACE",
+    "takingPlace": "Taking place...",
+    "complete": "Complete",
+    "completing": "Completing...",
+    "completeDescription": "Mark your queue visit as complete",
+    "exit": "Exit Queue",
+    "exiting": "Exiting...",
+    "exitDescription": "Leave the queue permanently"
+  },
+  "404": {
+    "title": "404",
+    "subtitle": "Page not found",
+    "returnToHome": "Return to Home"
+  },
+  "registration": {
+    "title": "Queue Registration",
+    "step1": {
+      "title": "How should we address you?"
+    },
+    "name": {
+      "title": "Name",
+      "placeholder": "Your name"
+    },
+    "step2": {
+      "title": "Personal Information"
+    },
+    "birthDate": {
+      "title": "Birth Date",
+      "hint": "Format: dd.MM.yyyy"
+    },
+    "password": {
+      "title": "Password",
+      "placeholder": "Enter password",
+      "hint": "Min 8 characters: uppercase, lowercase, number, special character",
+      "minLength": "min 8 chars",
+      "uppercase": "uppercase",
+      "lowercase": "lowercase",
+      "number": "number",
+      "special": "special char",
+      "strong": "Strong password "
+    },
+    "step3": {
+      "title": "Phone for confirmation",
+      "sendCode": "Send Code",
+      "getNumber": "Get Number"
+    },
+    "phone": {
+      "title": "Phone",
+      "placeholder": "+372 5xxx xxxx or +7 9xx xxx xxxx",
+      "hint": "Include country code (e.g., +372, +7, +44, +1, etc.)",
+      "description": "Phone is only for queue confirmation, never for advertising."
+    },
+    "step4": {
+      "title": "Confirmation 4 digit code from SMS",
+      "confirmation": "Confirmation"
+    },
+    "codeSent": "Code Sent",
+    "checkPhone": "Please check your phone for the verification code",
+    "codeResent": "Verification code has been resent to your phone",
+    "success": "Success",
+    "verified": "Your phone has been verified successfully",
+    "error": "Error",
+    "invalidCode": "Invalid verification code. Please try again.",
+    "errorMessage": "Something went wrong. Please try again."
+  },
+  "auth": {
+    "loginTab": "Login",
+    "registrationTab": "Registration"
+  },
+  "login": {
+    "title": "Login",
+    "subtitle": "Welcome back! Please login to continue.",
+    "phone": {
+      "title": "Phone",
+      "placeholder": "+372 5xxx xxxx or +7 9xx xxx xxxx",
+      "hint": "Include country code (e.g., +372, +7, +44, +1, etc.)"
+    },
+    "password": {
+      "title": "Password",
+      "placeholder": "Enter your password"
+    },
+    "loginButton": "Login",
+    "loggingIn": "Logging in...",
+    "success": "Login Successful",
+    "welcomeBack": "Welcome back!",
+    "error": "Login Failed",
+    "invalidCredentials": "Invalid phone number or password",
+    "errorMessage": "An error occurred during login"
+  },
+  "ticket": {
+    "success": "Place Taken Successfully",
+    "successMessage": "You have successfully joined the queue!",
+    "error": "Failed to Take Place",
+    "errorMessage": "An error occurred while joining the queue. Please try again.",
+    "complete": {
+      "success": "Completed",
+      "successMessage": "You have successfully completed the queue!"
+    },
+    "delete": {
+      "success": "Exited",
+      "successMessage": "You have successfully exited the queue!"
+    }
+  },
+  "yourPosition": {
+    "title": "Your Position",
+    "subtitle": "You are No. {{position}} ({{ahead}} people ahead of you in the queue)",
+    "description": "Your ticket number = your place in the queue, including those who joined before you.",
+    "border": "Border",
+    "end": "End",
+    "minutes": "Minutes",
+    "estimatedTime": "Estimated time",
+    "expectedCall": "Expected call"
+  }
+}

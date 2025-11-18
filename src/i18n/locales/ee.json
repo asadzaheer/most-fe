@@ -1,0 +1,139 @@
+{
+  "common": {
+    "back": "Tagasi",
+    "continue": "Jätka",
+    "cancel": "Tühista"
+  },
+  "nav": {
+    "home": "Avaleht",
+    "faq": "KKK",
+    "publicQueue": "Avalik järjekord",
+    "logout": "Logi välja"
+  },
+  "home": {
+    "title": "TEIE JÄRJEKORRA NUMBER",
+    "subtitle": "Järjekord kontrolli all. Kõik inimlikult.",
+    "ahead": "Ees",
+    "waitTime": "Ooteaeg",
+    "atBorder": "Piiril",
+    "battery": "Aku",
+    "actions": "TEGEVUSED",
+    "stepAway": "Lahku hetkeks",
+    "returning": "Tagasitulek...",
+    "positionFrozen": "Positsioon külmutatud 20 minutiks. Olete peatanud oma positsiooni 20 minutiks. Palun tulge õigeaegselt tagasi.",
+    "stepAwayLimit": "Paus kuni 20 minutit",
+    "watchQueue": "Vaata järjekorda",
+    "takePlace": "VÕTA KOHT",
+    "takingPlace": "Võtan kohta...",
+    "complete": "Lõpeta",
+    "completing": "Lõpetamine...",
+    "completeDescription": "Märgi järjekorra külastus lõpetatuks",
+    "exit": "Läbi",
+    "exiting": "Läbitulek...",
+    "exitDescription": "Läbi järjekorra"
+  },
+  "404": {
+    "title": "404",
+    "subtitle": "Lehte ei leitud",
+    "returnToHome": "Tagasi avalehele"
+  },
+  "registration": {
+    "title": "Järjekorra registreerimine",
+    "step1": {
+      "title": "Kuidas peaksime teid kutsuma?"
+    },
+    "name": {
+      "title": "Nimi",
+      "placeholder": "Teie nimi"
+    },
+    "step2": {
+      "title": "Isikuandmed"
+    },
+    "birthDate": {
+      "title": "Sünnikuupäev",
+      "hint": "Formaat: dd.MM.yyyy"
+    },
+    "password": {
+      "title": "Parool",
+      "placeholder": "Sisestage parool",
+      "hint": "Vähemalt 8 tähemärki: suurtäht, väiketäht, number, erimärk",
+      "minLength": "min 8 tähemärki",
+      "uppercase": "suurtäht",
+      "lowercase": "väiketäht",
+      "number": "number",
+      "special": "erimärk",
+      "strong": "Tugev parool ✓"
+    },
+    "step3": {
+      "title": "Telefon kinnitamiseks",
+      "sendCode": "Saada kood",
+      "getNumber": "Hangi number"
+    },
+    "phone": {
+      "title": "Telefon",
+      "placeholder": "+372 5xxx xxxx või +7 9xx xxx xxxx",
+      "hint": "Lisage riigikood (nt +372, +7, +44, +1 jne)",
+      "description": "Telefoni kasutatakse ainult järjekorra kinnitamiseks, mitte kunagi reklaamimiseks."
+    },
+    "step4": {
+      "title": "Kinnituskood 4 numbrit SMS-ist",
+      "confirmation": "Kinnitus",
+      "codeSent": "Kood saadetud",
+      "checkPhone": "Palun kontrollige oma telefoni kinnituskoodi saamiseks",
+      "codeResent": "Kinnituskood on teie telefoni uuesti saadetud",
+      "success": "Edukas",
+      "verified": "Teie telefon on edukalt kinnitatud",
+      "error": "Viga",
+      "invalidCode": "Vale kinnituskood. Palun proovige uuesti.",
+      "errorMessage": "Midagi läks valesti. Palun proovige uuesti."
+    }
+  },
+  "auth": {
+    "loginTab": "Sisselogimine",
+    "registrationTab": "Registreerimine"
+  },
+  "login": {
+    "title": "Tere tulemast tagasi",
+    "subtitle": "Logige sisse, et pääseda juurde oma järjekorra positsioonile",
+    "phone": {
+      "title": "Telefoninumber",
+      "placeholder": "+372 5xxx xxxx või +7 9xx xxx xxxx",
+      "hint": "Lisage riigikood (nt +372, +7, +44, +1 jne)"
+    },
+    "password": {
+      "title": "Parool",
+      "placeholder": "Sisestage oma parool"
+    },
+    "loginButton": "Logi sisse",
+    "loggingIn": "Sisselogimine...",
+    "success": "Sisselogimine õnnestus",
+    "welcomeBack": "Tere tulemast tagasi!",
+    "error": "Sisselogimine ebaõnnestus",
+    "invalidCredentials": "Vale telefoninumber või parool",
+    "errorMessage": "Sisselogimisel ilmnes viga"
+  },
+  "ticket": {
+    "success": "Koht edukalt võetud",
+    "successMessage": "Olete edukalt järjekorda liitunud!",
+    "error": "Koha võtmine ebaõnnestus",
+    "errorMessage": "Järjekorda liitumisel ilmnes viga. Palun proovige uuesti.",
+    "complete": {
+      "success": "Lõpetatud",
+      "successMessage": "Olete edukalt järjekorra lõpetatud!"
+    },
+    "delete": {
+      "success": "Lõpetatud",
+      "successMessage": "Olete edukalt järjekorra lõpetatud!"
+    }
+  },
+  "yourPosition": {
+    "title": "Teie positsioon",
+    "subtitle": "Olete number {{position}} ({{ahead}} inimest teie ees järjekorras)",
+    "description": "Teie piletinumber = teie koht järjekorras, kaasa arvatud need, kes liitusid enne teid.",
+    "border": "Piir",
+    "end": "Lõpp",
+    "minutes": "Minutit",
+    "estimatedTime": "Eeldatav aeg",
+    "expectedCall": "Eeldatav kutsumine"
+  }
+}
