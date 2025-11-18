@@ -126,12 +126,6 @@ This will:
 npm run preview
 ```
 
-### Deployment
-
-For detailed deployment instructions to Zone.eu or other hosting providers, see:
-- **[DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md)** - Complete deployment guide for Zone.eu web hosting
-- **[DEPLOYMENT_CHECKLIST.md](./DEPLOYMENT_CHECKLIST.md)** - Pre-deployment checklist
-
 **Quick Deployment Steps:**
 1. Build the application: `npm run build`
 2. Upload contents of `dist/` folder to your web server
