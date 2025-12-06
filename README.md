@@ -132,6 +132,80 @@ npm run preview
 3. Ensure `.htaccess` is in the root for proper React Router support
 4. Update `VITE_API_BASE_URL` in `.env` to point to production API
 
+## 🐳 Docker
+
+### Run with Docker Compose (Recommended)
+
+1. **Create environment file**
+```bash
+cp .env.example .env
+# Edit .env with your API URLs
+```
+
+2. **Build and run**
+```bash
+docker compose up -d
+```
+
+The app will be available at `http://localhost:3000`
+
+3. **Stop the container**
+```bash
+docker compose down
+```
+
+### Build Docker Image Manually
+
+```bash
+# Build with default settings
+docker build -t most-frontend .
+
+# Build with custom API URL
+docker build \
+  --build-arg VITE_API_BASE_URL=https://api.example.com/api \
+  --build-arg VITE_WS_URL=https://api.example.com/ws \
+  -t most-frontend .
+
+# Run the container
+docker run -d -p 3000:80 most-frontend
+```
+
+### Docker Compose Environment Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `VITE_API_BASE_URL` | `http://localhost:8080/api` | Backend API URL |
+| `VITE_WS_URL` | `http://localhost:8080/ws` | WebSocket URL |
+| `FRONTEND_PORT` | `3000` | Host port to expose |
+
+## 🚀 CI/CD with GitHub Actions
+
+The project includes GitHub Actions workflows for automated builds and deployments.
+
+### Workflows
+
+- **CI** (`.github/workflows/ci.yml`) - Runs on pull requests: lint and build
+- **Deploy** (`.github/workflows/deploy.yml`) - Runs on push to main: build, Docker image, deploy
+
+### Setup GitHub Actions
+
+1. **Add Repository Variables** (Settings → Secrets and variables → Actions → Variables):
+   - `VITE_API_BASE_URL` - Production API URL
+   - `VITE_WS_URL` - Production WebSocket URL
+
+2. **Add Repository Secrets** (Settings → Secrets and variables → Actions → Secrets):
+   - `SERVER_HOST` - Deployment server IP/hostname
+   - `SERVER_USER` - SSH username
+   - `SERVER_SSH_KEY` - Private SSH key for deployment
+   - `DEPLOY_PATH` - Path to docker-compose.yml on server
+
+### Docker Registry
+
+The workflow pushes images to GitHub Container Registry (ghcr.io). Images are tagged with:
+- `latest` - Latest main branch build
+- `main` - Branch name
+- `<sha>` - Git commit SHA
+
 ## 📁 Project Structure
 
 ```

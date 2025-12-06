@@ -175,7 +175,7 @@ export default function RegisterPage() {
   const handleResendCode = async () => {
     try {
       await getCodeMutation.mutateAsync({
-        number: phone,
+        phoneNumber: phone,
       })
       
       toast({
