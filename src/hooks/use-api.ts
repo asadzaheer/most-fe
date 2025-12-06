@@ -12,6 +12,8 @@ import {
   SignInRequest,
   GetCodeRequest,
   VerifyCodeRequest,
+  RequestResetRequest,
+  ResetPasswordRequest,
 } from '@/lib/api-service';
 
 // ============================================
@@ -49,9 +51,27 @@ export const useVerifyCode = () => {
   });
 };
 
+export const useRequestReset = () => {
+  return useMutation({
+    mutationFn: (data: RequestResetRequest) => authService.requestReset(data),
+  });
+};
+
+export const useResetPassword = () => {
+  return useMutation({
+    mutationFn: (data: ResetPasswordRequest) => authService.resetPassword(data),
+  });
+};
+
 // ============================================
 // Ticket Hooks
 // ============================================
+
+export const useGetTicket = () => {
+  return useMutation({
+    mutationFn: () => ticketService.get(),
+  });
+};
 
 export const useCreateTicket = () => {
   return useMutation({

@@ -1,23 +1,91 @@
+import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { InfoCard } from "@/components/InfoCard";
-import { AuthModal } from "@/components/AuthModal";
 import { QueueNumberCard } from "@/components/QueueNumberCard";
-import { useIsAuthenticated, useAuthStore, useHasTicket } from "@/store";
-import { useCreateTicket, useUpdateTicketStatus, useDeleteTicket } from "@/hooks/use-api";
+import { useIsAuthenticated, useAuthStore, useHasTicket, useTicket } from "@/store";
+import { useCreateTicket, useUpdateTicketStatus, useDeleteTicket, useGetTicket } from "@/hooks/use-api";
 import { useToast } from "@/hooks/use-toast";
+import { useWebSocket } from "@/hooks/use-websocket";
 
 export default function Index() {
   const { t } = useTranslation();
   const { toast } = useToast();
+  const navigate = useNavigate();
   const isAuthenticated = useIsAuthenticated();
   const hasTicket = useHasTicket();
+  const ticket = useTicket();
   const setTicket = useAuthStore((state) => state.setTicket);
   const clearTicket = useAuthStore((state) => state.clearTicket);
 
+  // WebSocket for real-time updates
+  const { isConnected, lastUpdate } = useWebSocket();
+
+  // Derive queue info from persisted ticket data
+  const queueNumber = ticket?.queuePosition ?? 0;
+  const peopleAhead = queueNumber > 0 ? queueNumber - 1 : 0;
+  const estimatedWaitTime = (() => {
+    const minutes = ticket?.waitingTime ?? 0;
+    if (minutes >= 60) {
+      const hours = Math.floor(minutes / 60);
+      const mins = minutes % 60;
+      return `${hours}h ${mins}m`;
+    }
+    return `${minutes}m`;
+  })();
+
+  // Handle WebSocket ticket updates - persist to store
+  const ticketRef = useRef(ticket);
+  ticketRef.current = ticket;
+  
+  useEffect(() => {
+    if (lastUpdate && ticketRef.current) {
+      // console.log('Received ticket update:', lastUpdate);
+      // Update ticket in store with new position/wait time
+      setTicket({
+        ...ticketRef.current,
+        status: lastUpdate.status || ticketRef.current.status,
+        queuePosition: lastUpdate.queuePosition ?? ticketRef.current.queuePosition,
+        waitingTime: lastUpdate.waitingTime ?? ticketRef.current.waitingTime,
+      });
+    }
+  }, [lastUpdate, setTicket]);
+
+  // Redirect to login if not authenticated
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/login");
+    }
+  }, [isAuthenticated, navigate]);
+
+  const getTicketMutation = useGetTicket();
   const createTicketMutation = useCreateTicket();
   const updateTicketStatusMutation = useUpdateTicketStatus();
   const deleteTicketMutation = useDeleteTicket();
+
+  // Fetch user's existing ticket on mount (handles login/refresh scenarios)
+  const hasFetchedTicket = useRef(false);
+  useEffect(() => {
+    if (isAuthenticated && !hasTicket && !hasFetchedTicket.current) {
+      hasFetchedTicket.current = true;
+      getTicketMutation.mutateAsync()
+        .then((response) => {
+          if (response) {
+            // User has an active ticket, restore it
+            setTicket({
+              status: response.status,
+              createdAt: response.createdAt,
+              queuePosition: response.queuePosition,
+              waitingTime: response.waitingTime,
+            });
+          }
+        })
+        .catch(() => {
+          // No ticket found or error - user doesn't have an active ticket
+        });
+    }
+  }, [isAuthenticated, hasTicket, setTicket, getTicketMutation]);
 
   const handleTakePlace = async () => {
     try {
@@ -116,10 +184,18 @@ export default function Index() {
           <>
             {hasTicket && (
               <>
+                {/* WebSocket connection indicator */}
+                {!isConnected && (
+                  <div className="bg-yellow-100 border border-yellow-300 text-yellow-800 px-4 py-2 rounded-lg mb-4 text-center text-sm">
+                    Connecting to real-time updates...
+                  </div>
+                )}
+
                 <QueueNumberCard
-                  queueNumber={16}
-                  initialPeopleAhead={15}
+                  queueNumber={queueNumber}
+                  initialPeopleAhead={peopleAhead}
                   isPaused={false}
+                  status={ticket?.status}
                 />
 
                 {/* Actions Card */}
@@ -156,8 +232,8 @@ export default function Index() {
                 </div>
 
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-8 sm:mb-12">
-                  <InfoCard icon="👥" value={15} label={t('home.ahead')} color="blue" />
-                  <InfoCard icon="⏱️" value="1h 45m" label={t('home.waitTime')} color="orange" />
+                  <InfoCard icon="👥" value={peopleAhead} label={t('home.ahead')} color="blue" />
+                  <InfoCard icon="⏱️" value={estimatedWaitTime} label={t('home.waitTime')} color="orange" />
                 </div>
               </>
             )}
@@ -176,13 +252,7 @@ export default function Index() {
               </button>
             )}
         </>
-        ) : (
-          <AuthModal 
-            onComplete={() => {}}
-            onCancel={() => {}}
-            defaultTab="login"
-          />
-        )}
+        ) : null}
       </main>
     </Layout>
   );

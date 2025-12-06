@@ -11,6 +11,8 @@ export const API_ENDPOINTS = {
   auth: {
     signUp: '/auth/sign-up',
     signIn: '/auth/sign-in',
+    requestReset: '/auth/request-reset',
+    reset: '/auth/reset',
   },
 
   verify: {
@@ -19,6 +21,7 @@ export const API_ENDPOINTS = {
   },
 
   tickets: {
+    get: '/tickets',
     create: '/tickets',
     updateStatus: '/tickets',
     delete: '/tickets',

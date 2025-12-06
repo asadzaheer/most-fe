@@ -9,6 +9,8 @@ import { UserRole, TicketStatus } from '@/lib/api-service';
 export interface Ticket {
   status: TicketStatus;
   createdAt: string;
+  queuePosition?: number;
+  waitingTime?: number;
 }
 
 /**

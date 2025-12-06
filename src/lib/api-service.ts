@@ -61,15 +61,41 @@ export interface VerifyCodeResponse {
   message: string;
 }
 
+export interface RequestResetRequest {
+  number: string;
+}
+
+export interface RequestResetResponse {
+  success: boolean;
+  message: string;
+}
+
+export interface ResetPasswordRequest {
+  token: string;
+  newPassword: string;
+}
+
+export interface ResetPasswordResponse {
+  success: boolean;
+  message: string;
+}
+
 // ============================================
 // Ticket Types
 // ============================================
 
-export type TicketStatus = 'WAITING' | 'ACTIVE' | 'COMPLETED' | 'CANCELLED';
+export type TicketStatus = 'WAITING' | 'CALLED' | 'ACTIVE' | 'COMPLETED' | 'CANCELLED';
 
 export interface CreateTicketResponse {
   status: TicketStatus;
   createdAt: string;
+}
+
+export interface GetTicketResponse {
+  status: TicketStatus;
+  createdAt: string;
+  queuePosition: number;
+  waitingTime: number;
 }
 
 // ============================================
@@ -83,6 +109,14 @@ export const authService = {
 
   signIn: async (data: SignInRequest): Promise<SignInResponse> => {
     return apiRequest.post(API_ENDPOINTS.auth.signIn, data);
+  },
+
+  requestReset: async (data: RequestResetRequest): Promise<RequestResetResponse> => {
+    return apiRequest.post(API_ENDPOINTS.auth.requestReset, data);
+  },
+
+  resetPassword: async (data: ResetPasswordRequest): Promise<ResetPasswordResponse> => {
+    return apiRequest.post(API_ENDPOINTS.auth.reset, data);
   },
 };
 
@@ -101,6 +135,10 @@ export const verificationService = {
 // ============================================
 
 export const ticketService = {
+  get: async (): Promise<GetTicketResponse | null> => {
+    return apiRequest.get(API_ENDPOINTS.tickets.get);
+  },
+
   create: async (): Promise<CreateTicketResponse> => {
     return apiRequest.post(API_ENDPOINTS.tickets.create, {});
   },

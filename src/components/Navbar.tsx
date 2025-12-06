@@ -1,5 +1,5 @@
-import { t } from "i18next"
 import { useState } from "react"
+import { useTranslation } from "react-i18next"
 import { useIsAuthenticated } from "@/store/useAuthStore"
 import { useAuthStore } from "@/store/useAuthStore"
 
@@ -11,6 +11,7 @@ interface NavbarProps {
 }
 
 export function Navbar({ language, onLanguageChange, onHomeClick, onFAQClick }: NavbarProps) {
+  const { t } = useTranslation()
   const [showLanguageMenu, setShowLanguageMenu] = useState(false)
   const [showMobileMenu, setShowMobileMenu] = useState(false)
   const isAuthenticated = useIsAuthenticated()

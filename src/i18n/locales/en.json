@@ -90,7 +90,9 @@
   },
   "auth": {
     "loginTab": "Login",
-    "registrationTab": "Registration"
+    "registrationTab": "Registration",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?"
   },
   "login": {
     "title": "Login",
@@ -106,11 +108,38 @@
     },
     "loginButton": "Login",
     "loggingIn": "Logging in...",
+    "forgotPassword": "Forgot password?",
     "success": "Login Successful",
     "welcomeBack": "Welcome back!",
     "error": "Login Failed",
     "invalidCredentials": "Invalid phone number or password",
     "errorMessage": "An error occurred during login"
+  },
+  "forgotPassword": {
+    "title": "Reset Password",
+    "subtitle": "Enter your phone number to receive a reset link",
+    "resetSubtitle": "Enter the code and your new password",
+    "enterNewPassword": "Enter your new password",
+    "token": "Reset Code",
+    "tokenPlaceholder": "Enter the code from SMS",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordPlaceholder": "Re-enter your new password",
+    "sendCode": "Send Reset Code",
+    "sending": "Sending...",
+    "resetButton": "Reset Password",
+    "resetting": "Resetting...",
+    "linkSentTitle": "Reset Link Sent!",
+    "linkSentMessage": "We've sent a password reset link to your phone via SMS.",
+    "linkSentHint": "Please check your SMS messages and click the link to reset your password. The link will expire in 15 minutes.",
+    "codeSent": "Code Sent",
+    "checkPhone": "Please check your phone for the reset code",
+    "success": "Password Reset",
+    "passwordReset": "Your password has been reset successfully",
+    "error": "Error",
+    "errorMessage": "Something went wrong. Please try again.",
+    "passwordMismatch": "Passwords do not match",
+    "backToLogin": "Back to Login"
   },
   "ticket": {
     "success": "Place Taken Successfully",
@@ -134,6 +163,10 @@
     "end": "End",
     "minutes": "Minutes",
     "estimatedTime": "Estimated time",
-    "expectedCall": "Expected call"
+    "expectedCall": "Expected call",
+    "calledTitle": "It's Your Turn!",
+    "calledMessage": "Please proceed to the border",
+    "calledDescription": "You are being called now. Please make your way to the checkpoint.",
+    "calledHint": "Don't forget to bring all your documents"
   }
 }

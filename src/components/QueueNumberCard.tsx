@@ -1,17 +1,23 @@
-import { t } from "i18next"
 import { useState, useEffect } from "react"
+import { useTranslation } from "react-i18next"
+import { TicketStatus } from "@/lib/api-service"
 
 interface QueueNumberCardProps {
   queueNumber: number
   initialPeopleAhead: number
   isPaused?: boolean
+  status?: TicketStatus
 }
 
 export function QueueNumberCard({
   queueNumber,
   initialPeopleAhead,
-  isPaused = false
+  isPaused = false,
+  status
 }: QueueNumberCardProps) {
+  const { t } = useTranslation()
+  // Check if user is being called (position 0 and status CALLED)
+  const isBeingCalled = status === 'CALLED' || (queueNumber === 0 && status !== 'WAITING');
   const MINUTES_PER_PERSON = 2
   const [currentTime, setCurrentTime] = useState(new Date())
   const [startTime] = useState(new Date())
@@ -60,6 +66,33 @@ export function QueueNumberCard({
     
     return () => clearInterval(timer)
   }, [isPaused])
+
+  // Show special UI when being called
+  if (isBeingCalled) {
+    return (
+      <div className="bg-white rounded-[25px] shadow-[0_6px_4px_rgba(0,0,0,0.1)] px-[18px] py-[23px] mb-[25px] border-4 border-green-400 animate-pulse">
+        <h2 className="text-2xl sm:text-3xl font-bold text-green-600 mb-4 text-center">
+          🎉 {t("yourPosition.calledTitle")}
+        </h2>
+        
+        <div className="bg-green-50 rounded-[16px] px-[20px] py-[24px] mb-[16px] text-center">
+          <div className="text-6xl mb-4">🔔</div>
+          <p className="text-green-800 font-bold text-xl mb-2">
+            {t("yourPosition.calledMessage")}
+          </p>
+          <p className="text-green-600 text-base">
+            {t("yourPosition.calledDescription")}
+          </p>
+        </div>
+
+        <div className="bg-green-100 rounded-[12px] px-[16px] py-[12px] text-center">
+          <p className="text-green-700 font-medium text-sm">
+            {t("yourPosition.calledHint")}
+          </p>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className={`bg-white rounded-[25px] shadow-[0_6px_4px_rgba(0,0,0,0.1)] px-[18px] py-[23px] mb-[25px] border-4 ${

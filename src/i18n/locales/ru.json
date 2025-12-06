@@ -93,7 +93,9 @@
   },
   "auth": {
     "loginTab": "Вход",
-    "registrationTab": "Регистрация"
+    "registrationTab": "Регистрация",
+    "noAccount": "Нет аккаунта?",
+    "haveAccount": "Уже есть аккаунт?"
   },
   "login": {
     "title": "С возвращением",
@@ -109,11 +111,38 @@
     },
     "loginButton": "Войти",
     "loggingIn": "Вход...",
+    "forgotPassword": "Забыли пароль?",
     "success": "Успешный вход",
     "welcomeBack": "С возвращением!",
     "error": "Ошибка входа",
     "invalidCredentials": "Неверный номер телефона или пароль",
     "errorMessage": "Произошла ошибка при входе"
+  },
+  "forgotPassword": {
+    "title": "Сброс пароля",
+    "subtitle": "Введите номер телефона для получения ссылки сброса",
+    "resetSubtitle": "Введите код и новый пароль",
+    "enterNewPassword": "Введите новый пароль",
+    "token": "Код сброса",
+    "tokenPlaceholder": "Введите код из SMS",
+    "newPassword": "Новый пароль",
+    "confirmPassword": "Подтвердите пароль",
+    "confirmPasswordPlaceholder": "Повторите новый пароль",
+    "sendCode": "Отправить код",
+    "sending": "Отправка...",
+    "resetButton": "Сбросить пароль",
+    "resetting": "Сброс...",
+    "linkSentTitle": "Ссылка отправлена!",
+    "linkSentMessage": "Мы отправили ссылку для сброса пароля на ваш телефон по SMS.",
+    "linkSentHint": "Пожалуйста, проверьте SMS и перейдите по ссылке для сброса пароля. Ссылка действительна 15 минут.",
+    "codeSent": "Код отправлен",
+    "checkPhone": "Пожалуйста, проверьте телефон для получения кода сброса",
+    "success": "Пароль сброшен",
+    "passwordReset": "Ваш пароль успешно сброшен",
+    "error": "Ошибка",
+    "errorMessage": "Что-то пошло не так. Попробуйте снова.",
+    "passwordMismatch": "Пароли не совпадают",
+    "backToLogin": "Вернуться к входу"
   },
   "ticket": {
     "success": "Место успешно занято",
@@ -137,6 +166,10 @@
     "end": "Конец",
     "minutes": "Минуты",
     "estimatedTime": "Ориентировочное время",
-    "expectedCall": "Ожидаемый вызов"
+    "expectedCall": "Ожидаемый вызов",
+    "calledTitle": "Ваша очередь!",
+    "calledMessage": "Пожалуйста, пройдите к границе",
+    "calledDescription": "Вас вызывают. Пожалуйста, направляйтесь к пункту пропуска.",
+    "calledHint": "Не забудьте взять все документы"
   }
 }
